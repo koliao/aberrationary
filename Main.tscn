@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b04khl7pf0hkn"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_3mcjd"]
+[ext_resource type="PackedScene" uid="uid://c3vpo8bp6ege2" path="res://LettersContainer.tscn" id="2_v1kpr"]
+[ext_resource type="PackedScene" uid="uid://pamuvh65rq3k" path="res://EditBox.tscn" id="3_5tiue"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_3mcjd")
+
+[node name="LettersContainer" parent="." instance=ExtResource("2_v1kpr")]
+position = Vector2(672, 2)
+scale = Vector2(20, 20)
+
+[node name="EditBox" parent="." instance=ExtResource("3_5tiue")]
+position = Vector2(315, 234)
+scale = Vector2(4, 4)

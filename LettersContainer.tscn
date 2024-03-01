@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3vpo8bp6ege2"]
+
+[ext_resource type="Script" path="res://LettersContainer.gd" id="1_h4p2e"]
+[ext_resource type="Texture2D" uid="uid://blxyq6ol7m8k6" path="res://card.png" id="2_qe8wj"]
+[ext_resource type="PackedScene" uid="uid://vwk3i7ylgi46" path="res://Letter.tscn" id="2_r1dht"]
+
+[node name="LettersContainer" type="Node2D"]
+script = ExtResource("1_h4p2e")
+
+[node name="Card" type="Sprite2D" parent="."]
+texture = ExtResource("2_qe8wj")
+centered = false
+
+[node name="A" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(4, 3)
+scale = Vector2(0.2, 0.2)
+
+[node name="B" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(7, 3)
+scale = Vector2(0.2, 0.2)
+letter = "B"
+
+[node name="C" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(10, 3)
+scale = Vector2(0.2, 0.2)
+letter = "C"
+
+[node name="D" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(13, 3)
+scale = Vector2(0.2, 0.2)
+letter = "D"
+
+[node name="E" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(16, 3)
+scale = Vector2(0.2, 0.2)
+letter = "E"
+
+[node name="F" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(19, 3)
+scale = Vector2(0.2, 0.2)
+letter = "F"
+
+[node name="G" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(4, 7)
+scale = Vector2(0.2, 0.2)
+letter = "G"
+
+[node name="H" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(7, 7)
+scale = Vector2(0.2, 0.2)
+letter = "H"
+
+[node name="I" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(10, 7)
+scale = Vector2(0.2, 0.2)
+letter = "I"
+
+[node name="J" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(13, 7)
+scale = Vector2(0.2, 0.2)
+letter = "J"
+
+[node name="K" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(16, 7)
+scale = Vector2(0.2, 0.2)
+letter = "K"
+
+[node name="L" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(19, 7)
+scale = Vector2(0.2, 0.2)
+letter = "L"
+
+[node name="M" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(4, 11)
+scale = Vector2(0.2, 0.2)
+letter = "M"
+
+[node name="N" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(7, 11)
+scale = Vector2(0.2, 0.2)
+letter = "N"
+
+[node name="O" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(10, 11)
+scale = Vector2(0.2, 0.2)
+letter = "O"
+
+[node name="P" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(13, 11)
+scale = Vector2(0.2, 0.2)
+letter = "P"
+
+[node name="Q" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(16, 11)
+scale = Vector2(0.2, 0.2)
+letter = "Q"
+
+[node name="R" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(19, 11)
+scale = Vector2(0.2, 0.2)
+letter = "R"
+
+[node name="S" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(4, 15)
+scale = Vector2(0.2, 0.2)
+letter = "S"
+
+[node name="T" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(7, 15)
+scale = Vector2(0.2, 0.2)
+letter = "T"
+
+[node name="U" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(10, 15)
+scale = Vector2(0.2, 0.2)
+letter = "U"
+
+[node name="V" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(13, 15)
+scale = Vector2(0.2, 0.2)
+letter = "V"
+
+[node name="W" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(16, 15)
+scale = Vector2(0.2, 0.2)
+letter = "W"
+
+[node name="X" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(19, 15)
+scale = Vector2(0.2, 0.2)
+letter = "X"
+
+[node name="Y" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(4, 19)
+scale = Vector2(0.2, 0.2)
+letter = "Y"
+
+[node name="Z" parent="Card" instance=ExtResource("2_r1dht")]
+position = Vector2(7, 19)
+scale = Vector2(0.2, 0.2)
+letter = "Z"

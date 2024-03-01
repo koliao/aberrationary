@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pamuvh65rq3k"]
+
+[ext_resource type="Script" path="res://EditBox.gd" id="1_ft3bt"]
+
+[node name="EditBox" type="Node2D"]
+script = ExtResource("1_ft3bt")

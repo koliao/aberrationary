@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://vwk3i7ylgi46"]
+
+[ext_resource type="Script" path="res://Letter.gd" id="1_r40op"]
+
+[node name="Letter" type="Node2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_r40op")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 11.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A"
+horizontal_alignment = 1
