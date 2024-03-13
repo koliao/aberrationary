@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw0o7r17v1efe"]
+
+[ext_resource type="Script" path="res://Dialog.gd" id="1_hx34k"]
+[ext_resource type="Texture2D" uid="uid://blxyq6ol7m8k6" path="res://card.png" id="1_swmbh"]
+[ext_resource type="FontFile" uid="uid://chbpecdlqj54u" path="res://monogram.ttf" id="2_t8xm7"]
+[ext_resource type="PackedScene" uid="uid://bl346syc3pf87" path="res://CustomLabel.tscn" id="4_7qw2r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4vja"]
+font = ExtResource("2_t8xm7")
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[node name="Dialog" type="Node2D"]
+script = ExtResource("1_hx34k")
+
+[node name="Card" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = ExtResource("1_swmbh")
+centered = false
+
+[node name="Title" parent="." instance=ExtResource("4_7qw2r")]
+position = Vector2(75, 60)
+scale = Vector2(5, 5)
+
+[node name="Progress" type="Label" parent="."]
+offset_left = 318.0
+offset_top = 401.0
+offset_right = 415.0
+offset_bottom = 439.0
+text = "5 / 5"
+label_settings = SubResource("LabelSettings_f4vja")
+
+[node name="Task" parent="." instance=ExtResource("4_7qw2r")]
+position = Vector2(59, 129)
+scale = Vector2(3, 3)

@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc4vng3brsi13"]
+
+[ext_resource type="Script" path="res://GameOver.gd" id="1_iym18"]
+[ext_resource type="Texture2D" uid="uid://dsglryvc8g3th" path="res://card_large.png" id="1_pt2wo"]
+[ext_resource type="PackedScene" uid="uid://bl346syc3pf87" path="res://CustomLabel.tscn" id="2_evqqd"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_iym18")
+
+[node name="CardLarge" type="Sprite2D" parent="."]
+position = Vector2(590, 220)
+scale = Vector2(7, 7)
+texture = ExtResource("1_pt2wo")
+
+[node name="Title" parent="." instance=ExtResource("2_evqqd")]
+position = Vector2(505, 90)
+scale = Vector2(3, 3)
+text = "GAME OVER"
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="Readability" parent="." instance=ExtResource("2_evqqd")]
+position = Vector2(292, 176)
+scale = Vector2(2, 2)
+text = "LETTER READABILITY:"
+width = 350
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="PoemAccuracy" parent="." instance=ExtResource("2_evqqd")]
+position = Vector2(292, 242)
+scale = Vector2(2, 2)
+text = "POEM ACCURACY:"
+width = 350
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="Total" parent="." instance=ExtResource("2_evqqd")]
+position = Vector2(292, 339)
+scale = Vector2(2, 2)
+text = "TOTAL SCORE:"
+width = 350
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Actions" parent="." instance=ExtResource("2_evqqd")]
+visible = false
+position = Vector2(460, 423)
+scale = Vector2(2, 2)
+text = "PRESS [R] TO RESTART"
+width = 300
+use_clean_font = true
+color = Color(0.921569, 0.913725, 0.835294, 1)
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

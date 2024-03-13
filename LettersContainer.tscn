@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3vpo8bp6ege2"]
+[gd_scene load_steps=8 format=3 uid="uid://c3vpo8bp6ege2"]
 
 [ext_resource type="Script" path="res://LettersContainer.gd" id="1_h4p2e"]
 [ext_resource type="Texture2D" uid="uid://blxyq6ol7m8k6" path="res://card.png" id="2_qe8wj"]
 [ext_resource type="PackedScene" uid="uid://vwk3i7ylgi46" path="res://Letter.tscn" id="2_r1dht"]
+[ext_resource type="Texture2D" uid="uid://bto3f0wkdiqqq" path="res://card_small.png" id="4_v21je"]
+[ext_resource type="FontFile" uid="uid://chbpecdlqj54u" path="res://monogram.ttf" id="5_ylv0q"]
+[ext_resource type="PackedScene" uid="uid://bl346syc3pf87" path="res://CustomLabel.tscn" id="6_07hk4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2awn"]
+font = ExtResource("5_ylv0q")
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)
 
 [node name="LettersContainer" type="Node2D"]
 script = ExtResource("1_h4p2e")
+selected_letters = ["I", "L"]
 
 [node name="Card" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
 texture = ExtResource("2_qe8wj")
 centered = false
 
@@ -139,3 +150,31 @@ letter = "Y"
 position = Vector2(7, 19)
 scale = Vector2(0.2, 0.2)
 letter = "Z"
+
+[node name="CardSmall" type="Sprite2D" parent="."]
+position = Vector2(26, 13)
+scale = Vector2(0.48, 0.48)
+texture = ExtResource("4_v21je")
+centered = false
+
+[node name="Label" type="Label" parent="CardSmall"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.268
+anchor_top = 0.171
+anchor_right = 0.737
+anchor_bottom = 0.347
+offset_left = -0.216
+offset_top = 1.948
+offset_right = 12.156
+offset_bottom = 12.836
+scale = Vector2(0.25, 0.25)
+text = "0.0"
+label_settings = SubResource("LabelSettings_g2awn")
+
+[node name="CustomLabel" parent="." instance=ExtResource("6_07hk4")]
+position = Vector2(26, 19)
+scale = Vector2(0.09, 0.09)
+text = "LETTER READABILITY"
+width = 100
+color = Color(0.921569, 0.913725, 0.835294, 1)

@@ -1,16 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://b04khl7pf0hkn"]
+[gd_scene load_steps=9 format=3 uid="uid://b04khl7pf0hkn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_3mcjd"]
 [ext_resource type="PackedScene" uid="uid://c3vpo8bp6ege2" path="res://LettersContainer.tscn" id="2_v1kpr"]
 [ext_resource type="PackedScene" uid="uid://pamuvh65rq3k" path="res://EditBox.tscn" id="3_5tiue"]
+[ext_resource type="PackedScene" uid="uid://bw0o7r17v1efe" path="res://Dialog.tscn" id="4_qfu14"]
+[ext_resource type="PackedScene" uid="uid://bl346syc3pf87" path="res://CustomLabel.tscn" id="5_lj1dp"]
+[ext_resource type="PackedScene" uid="uid://br0w1umpaw72j" path="res://final_screen.tscn" id="6_da5rh"]
+[ext_resource type="PackedScene" uid="uid://7oynmpobqx3x" path="res://bonus_round_info.tscn" id="7_n8bvq"]
+[ext_resource type="PackedScene" uid="uid://bc4vng3brsi13" path="res://GameOver.tscn" id="8_x2yp5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3mcjd")
 
-[node name="LettersContainer" parent="." instance=ExtResource("2_v1kpr")]
-position = Vector2(672, 2)
+[node name="FinalScreen" parent="." instance=ExtResource("6_da5rh")]
+visible = false
+
+[node name="LettersContainer" parent="." groups=["MainScreen"] instance=ExtResource("2_v1kpr")]
+position = Vector2(-2.99988, 3.05176e-05)
 scale = Vector2(20, 20)
 
-[node name="EditBox" parent="." instance=ExtResource("3_5tiue")]
-position = Vector2(315, 234)
-scale = Vector2(4, 4)
+[node name="EditBox" parent="." groups=["MainScreen"] instance=ExtResource("3_5tiue")]
+position = Vector2(535, 108)
+scale = Vector2(2, 2)
+
+[node name="Dialog" parent="." groups=["MainScreen"] instance=ExtResource("4_qfu14")]
+position = Vector2(664, 21)
+
+[node name="CustomLabel" parent="." groups=["MainScreen"] instance=ExtResource("5_lj1dp")]
+modulate = Color(1, 0.4, 0.4, 1)
+position = Vector2(722, 77)
+scale = Vector2(5, 5)
+
+[node name="BonusRoundInfo" parent="." instance=ExtResource("7_n8bvq")]
+visible = false
+
+[node name="GameOver" parent="." instance=ExtResource("8_x2yp5")]
+visible = false
+
+[connection signal="pixel_drawn" from="EditBox" to="." method="_on_edit_box_pixel_drawn"]
+[connection signal="pixel_erased" from="EditBox" to="." method="_on_edit_box_pixel_erased"]

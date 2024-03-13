@@ -7,9 +7,24 @@ texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_r40op")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 11.0
-offset_bottom = 23.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 16.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.2
+anchor_bottom = 1.769
+offset_bottom = 0.00299835
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "A"
 horizontal_alignment = 1
+
+[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
+[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
+[connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
