@@ -46,7 +46,7 @@ func draw_pixel(symbol: String, x: int, y: int) -> void:
 	if(not font_symbol):
 		push_error("[FONT ERROR]: font symbol not found for symbol %s" % symbol)
 		return
-	
+
 	font_symbol.image.set_pixel(x, y + 3, Color.WHITE)
 	font_symbol.image_texture.update(font_symbol.image)
 	font_symbol.bitmap = self._bit_array_from_image(font_symbol.image)
@@ -56,7 +56,7 @@ func erase_pixel(symbol: String, x: int, y: int) -> void:
 	if(not font_symbol):
 		push_error("[FONT ERROR]: font symbol not found for symbol %s" % symbol)
 		return
-	
+
 	font_symbol.image.set_pixel(x, y + 3, Color.TRANSPARENT)
 	font_symbol.image_texture.update(font_symbol.image)
 	font_symbol.bitmap = self._bit_array_from_image(font_symbol.image)
@@ -191,7 +191,7 @@ func erase_letter(letter):
 	var width = image.get_width()
 	var height = image.get_height()
 
-	for y in range(height):
+	for y in range(height - 3):
 		for x in range(width):
 			self.erase_pixel(letter, x, y)
 
@@ -203,7 +203,7 @@ func fill_letter(letter):
 	var width = image.get_width()
 	var height = image.get_height()
 
-	for y in range(height):
+	for y in range(height - 3):
 		for x in range(width):
 			self.draw_pixel(letter, x, y)
 
