@@ -26,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var mouse_pos = get_global_mouse_position()
+	var mouse_pos = get_local_mouse_position()
 	var mouse_in_bounds = self._hitbox().has_point(mouse_pos)
 	
 	if(mouse_in_bounds):
@@ -46,7 +46,7 @@ func _process(delta):
 	pass
 
 func _draw():
-	var mouse_pos = get_global_mouse_position()
+	var mouse_pos = get_local_mouse_position()
 	var mouse_in_bounds = self._hitbox().has_point(mouse_pos)
 
 	var tile_pos = floor(get_local_mouse_position() / tile_size)
@@ -69,7 +69,7 @@ func _draw():
 	pass
 
 func _hitbox() -> Rect2:
-	return Rect2(position.x, position.y, self.width*tile_size*scale.x, self.height*tile_size*scale.y)
+	return Rect2(0, 0, self.width*tile_size, self.height*tile_size)
 
 func _draw_pixel(p : Vector2i):
 	if(get_parent().current_mode == GameMode.DRAW):

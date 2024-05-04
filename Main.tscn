@@ -37,6 +37,7 @@ visible = false
 [node name="GameOver" parent="." instance=ExtResource("8_x2yp5")]
 visible = false
 
+[connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="pixel_drawn" from="EditBox" to="." method="_on_edit_box_pixel_drawn"]
 [connection signal="pixel_erased" from="EditBox" to="." method="_on_edit_box_pixel_erased"]
 [connection signal="pixel_hovered" from="EditBox" to="." method="_on_edit_box_pixel_hovered"]

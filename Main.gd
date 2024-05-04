@@ -293,3 +293,20 @@ func _total_accuracy():
 func _on_edit_box_pixel_hovered(x, y):
 	$LettersContainer.on_edit_box_pixel_hovered(x, y)
 
+
+
+func _on_draw():
+	var BASE_WIDTH  = 1152
+	var BASE_HEIGHT = 648
+	var viewport_rect = get_viewport_rect()
+	var vw = viewport_rect.size.x
+	var vh = viewport_rect.size.y
+	var scale_factor = min(vw / BASE_WIDTH, vh / BASE_HEIGHT)
+	
+	scale.x = scale_factor
+	scale.y = scale_factor
+	
+	var container_width = scale_factor * BASE_WIDTH
+	var dx = vw - container_width
+	
+	position.x = dx/2
