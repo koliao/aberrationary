@@ -105,6 +105,7 @@ func _pass_round():
 		4, 9, 14:
 			# TODO: Maybe use available powers and remove from there
 			self.selected_power = self.powers.pick_random().type
+
 			var last_round = self.current_round == 14
 			var last_round_banned_power = last_round and self.selected_power == Power.PROTECT
 			while(self.selected_power in self.used_powers or last_round_banned_power):
@@ -287,3 +288,8 @@ func _total_accuracy():
 		sum += poem.accuracy
 
 	return sum
+
+
+func _on_edit_box_pixel_hovered(x, y):
+	$LettersContainer.on_edit_box_pixel_hovered(x, y)
+

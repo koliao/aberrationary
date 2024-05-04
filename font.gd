@@ -47,6 +47,14 @@ func draw_pixel(symbol: String, x: int, y: int) -> void:
 		push_error("[FONT ERROR]: font symbol not found for symbol %s" % symbol)
 		return
 
+	if(x > font_symbol.image.get_width()):
+		print("[FONT ERROR]: x out of bounds")
+		return
+		
+	if(y > font_symbol.image.get_height()):
+		print("[FONT ERROR]: y out of bounds")
+		return
+		
 	font_symbol.image.set_pixel(x, y + 3, Color.WHITE)
 	font_symbol.image_texture.update(font_symbol.image)
 	font_symbol.bitmap = self._bit_array_from_image(font_symbol.image)
@@ -175,12 +183,18 @@ func flip_letter(letter):
 	var width = image.get_width()
 	var height = image.get_height()
 
-	for y in range(floor(height/2)):
+	#for y in range(floor(height/2)):
+	# Padding 3 top, 2 bottom
+	# For Q symetry, we use 1 from top 1 from bottom, 9 in total
+	# 2 to 2 + floor(9 / 2)
+	# 2 to 2 + 4
+	for y in range(2, 2 + 4):
 		for x in range(width):
+			var bottom_y = (9 + 1 + 2) - y
 			var t_pixel = image.get_pixel(x, y)
-			var b_pixel = image.get_pixel(x, height - 1 - y)
+			var b_pixel = image.get_pixel(x, bottom_y)
 			image.set_pixel(x, y, b_pixel)
-			image.set_pixel(x, height - 1 - y, t_pixel)
+			image.set_pixel(x, bottom_y, t_pixel)
 	
 	image_texture.update(image)
 	font_symbol.bitmap = self._bit_array_from_image(image)
@@ -191,7 +205,7 @@ func erase_letter(letter):
 	var width = image.get_width()
 	var height = image.get_height()
 
-	for y in range(height - 3):
+	for y in range(height - 5):
 		for x in range(width):
 			self.erase_pixel(letter, x, y)
 
@@ -203,7 +217,7 @@ func fill_letter(letter):
 	var width = image.get_width()
 	var height = image.get_height()
 
-	for y in range(height - 3):
+	for y in range(height - 5):
 		for x in range(width):
 			self.draw_pixel(letter, x, y)
 

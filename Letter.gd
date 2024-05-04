@@ -6,6 +6,8 @@ var image_texture : ImageTexture
 @export var letter : String = "A"
 var selected : bool = false
 var hovered : bool = false
+@export var show_preview_pixel : bool = false
+@export var modify_preview_pixel : Vector2i = Vector2.ZERO
 signal clicked
 # TODO: extract width and height
 
@@ -25,6 +27,7 @@ func readability() -> float:
 
 func _process(delta):
 	queue_redraw()
+	show_preview_pixel = false
 	pass
 
 func _draw():
@@ -40,6 +43,14 @@ func _draw():
 	if(is_protected):
 		draw_rect(Rect2(Vector2(-1, 3 - 1), Vector2(7, 10)), Color(0.0, 0.5, 0.0, 0.5))
 		
+	if(show_preview_pixel):
+		var top_left = Vector2(modify_preview_pixel)
+		top_left.y += 3
+		
+		var t = Time.get_ticks_msec() * 0.001
+		var rainbow_color = Color.from_hsv(t, 0.8, 0.8)
+		draw_rect(Rect2(top_left, Vector2(1, 1)), rainbow_color, true)
+		
 func _on_control_mouse_entered():
 	self.hovered = true
 
@@ -49,3 +60,9 @@ func _on_control_mouse_exited():
 func _on_control_gui_input(event):
 	if(event.is_action_pressed("click")):
 		get_parent().get_parent().letter_clicked(self.letter)
+		
+
+func set_show_preview_pixel(x : int, y : int):
+	show_preview_pixel = true
+	modify_preview_pixel = Vector2i(x, y)
+

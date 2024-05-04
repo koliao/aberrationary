@@ -74,6 +74,11 @@ func on_edit_box_pixel_erased(x, y):
 	for letter in self.letters():
 		if(letter.letter in self.selected_letters):
 			GlobalFont.erase_pixel(letter.letter, x, y)
+			
+func on_edit_box_pixel_hovered(x, y):
+	for letter in self.letters():
+		if(letter.letter in self.selected_letters):
+			letter.set_show_preview_pixel(x, y)
 
 func letter_clicked(letter):
 	if(self.can_select_letters):

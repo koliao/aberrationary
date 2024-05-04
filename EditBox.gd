@@ -7,7 +7,7 @@ enum GameMode {
 }
 
 var width : int = 5
-var height : int = 8
+var height : int = 7
 const tile_size : int = 8
 
 var image : Image = Image.create(self.width, self.height, false, Image.FORMAT_RGBA8)
@@ -18,6 +18,7 @@ var pressing = false
 
 signal pixel_drawn(x: int, y: int)
 signal pixel_erased(x: int, y: int)
+signal pixel_hovered(x: int, y: int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +28,11 @@ func _ready():
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var mouse_in_bounds = self._hitbox().has_point(mouse_pos)
+	
+	if(mouse_in_bounds):
+		var tile_pos = floor(get_local_mouse_position() / tile_size)
+		pixel_hovered.emit(tile_pos.x, tile_pos.y)
+	
 	if(Input.is_action_just_released("click") and mouse_in_bounds):
 		self._draw_pixel(floor(get_local_mouse_position() / tile_size))
 	if(Input.is_action_pressed("click") and mouse_in_bounds):

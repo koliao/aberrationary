@@ -39,3 +39,4 @@ visible = false
 
 [connection signal="pixel_drawn" from="EditBox" to="." method="_on_edit_box_pixel_drawn"]
 [connection signal="pixel_erased" from="EditBox" to="." method="_on_edit_box_pixel_erased"]
+[connection signal="pixel_hovered" from="EditBox" to="." method="_on_edit_box_pixel_hovered"]
