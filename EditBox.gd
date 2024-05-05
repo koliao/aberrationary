@@ -49,6 +49,12 @@ func _process(delta):
 	pass
 
 func _draw():
+	for x in range(5):
+		for y in range(7):
+			var square_pos = Vector2(x*tile_size, y*tile_size)
+			if( ((x + y) % 2) == 0):
+				draw_rect(Rect2(square_pos, tile_size*Vector2(1.0, 1.0)), Color(0.0, 0.0, 0.0, 0.1), true)
+			
 	var mouse_pos = get_local_mouse_position()
 	var mouse_in_bounds = self._hitbox().has_point(mouse_pos)
 

@@ -31,9 +31,16 @@ func _process(delta):
 	pass
 
 func _draw():
+	var is_protected = GlobalFont.is_symbol_protected(self.letter)	
+	if(self.selected and not is_protected):
+		for x in range(-1, 5 + 1):
+			for y in range(3 - 1, 7 + 3 + 1):
+				var square_pos = Vector2(x, y)
+				if( ((x + y) % 2) == 0 ):
+					draw_rect(Rect2(square_pos, Vector2(1.0, 1.0)), Color(0.0, 0.0, 0.0, 0.2))
+		
 	draw_texture(GlobalFont.symbol_texture(self.letter), Vector2(0, 0), Color.BLACK)
 	
-	var is_protected = GlobalFont.is_symbol_protected(self.letter)
 	if(self.selected and not is_protected):
 		draw_rect(Rect2(Vector2(-1, 3 - 1), Vector2(7, 10)), Color(1.0, 0.5, 0.0, 0.5))
 		

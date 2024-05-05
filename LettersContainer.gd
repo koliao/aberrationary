@@ -81,8 +81,12 @@ func on_edit_box_pixel_hovered(x, y):
 			letter.set_show_preview_pixel(x, y)
 
 func letter_clicked(letter):
-	if(self.can_select_letters):
-		self.selected_letters.append(letter)
+	if(letter in self.selected_letters):
+		var idx = self.selected_letters.find(letter)
+		self.selected_letters.remove_at(idx)
+	else:
+		if(self.can_select_letters):
+			self.selected_letters.append(letter)
 
 func set_power_round():
 	self.selected_letters = []
