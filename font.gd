@@ -230,5 +230,6 @@ func reset_letter(letter):
 	font_symbol.bitmap = self._bit_array_from_image(font_symbol.image)
 
 func reset():
+	self.protected_letters = []
 	for symbol in self.font.keys():
 		self.reset_letter(symbol)
