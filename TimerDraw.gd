@@ -11,8 +11,14 @@ func reset():
 	self.time = 0
 
 func _process(delta):
+	if(not get_parent().visible):
+		return
+		
 	self.time += delta
-	$CustomLabel.text = String.num(end_time - floor(self.time)) + " SECONDS LEFT"
+	var new_time = String.num(end_time - floor(self.time)) + " SECONDS LEFT"
+	if($CustomLabel.text != new_time):
+		$TickSound.play()
+	$CustomLabel.text = new_time
 	if(self.time > end_time):
 		out_of_time.emit()
 	queue_redraw()

@@ -25,10 +25,15 @@ func _process(delta):
 	queue_redraw()
 
 func _input(event):
+	if(not self.visible):
+		return
+		
 	if event is InputEventKey:
 		var enter_key = event.keycode == KEY_ENTER
 		var pressed = event.pressed and not event.echo
+		
 		if(enter_key and pressed):
+			$KeyPressedSound.play()
 			self._submit_poem()
 
 var adjectives = [

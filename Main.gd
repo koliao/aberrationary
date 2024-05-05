@@ -47,6 +47,7 @@ func _process(delta):
 
 	elif(self.current_mode == GameMode.BONUS_INFO):
 		if(Input.is_action_just_pressed("enter")):
+			$KeyPressedSound.play()
 			self.current_mode = GameMode.FINAL
 			$BonusRoundInfo.hide()
 			$FinalScreen.reset()
@@ -69,6 +70,7 @@ func _process(delta):
 
 	elif(self.current_mode == GameMode.GAME_OVER):
 		if($GameOver.restart):
+			$KeyPressedSound.play()
 			GlobalFont.reset()
 			$GameOver.hide()
 			var main_nodes = get_tree().get_nodes_in_group("MainScreen")
@@ -91,6 +93,9 @@ func _pass_round():
 	self.task_total_count = 5
 	match(self.current_round):
 		0, 1, 5, 6, 10, 11:
+			match(self.current_round):
+				5, 10:
+					$ActivatePowerSound.play()
 			self.current_mode = GameMode.DRAW
 			self.current_round += 1
 			$EditBox.show()
@@ -117,6 +122,7 @@ func _pass_round():
 			$LettersContainer.set_power_round()
 			$EditBox.hide()
 		15:
+			$ActivatePowerSound.play()
 			self.current_mode = GameMode.BONUS_INFO
 			$BonusRoundInfo.show()
 			var main_nodes = get_tree().get_nodes_in_group("MainScreen")
@@ -292,7 +298,6 @@ func _total_accuracy():
 
 func _on_edit_box_pixel_hovered(x, y):
 	$LettersContainer.on_edit_box_pixel_hovered(x, y)
-
 
 
 func _on_draw():

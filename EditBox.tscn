@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://pamuvh65rq3k"]
+[gd_scene load_steps=4 format=3 uid="uid://pamuvh65rq3k"]
 
 [ext_resource type="Script" path="res://EditBox.gd" id="1_ft3bt"]
+[ext_resource type="AudioStream" uid="uid://barrk38mq2wwq" path="res://sounds/Modern3.mp3" id="2_dnlok"]
+[ext_resource type="AudioStream" uid="uid://eg5x76xamp3g" path="res://sounds/Wood Block1.mp3" id="3_r7vyq"]
 
 [node name="EditBox" type="Node2D"]
 script = ExtResource("1_ft3bt")
+
+[node name="PixelDrawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dnlok")
+pitch_scale = 0.3
+
+[node name="PixelErased" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dnlok")
+pitch_scale = 0.2
+
+[node name="AlreadyModified" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_r7vyq")
+volume_db = -10.0
+pitch_scale = 0.6

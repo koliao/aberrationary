@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b04khl7pf0hkn"]
+[gd_scene load_steps=13 format=3 uid="uid://b04khl7pf0hkn"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_3mcjd"]
 [ext_resource type="PackedScene" uid="uid://c3vpo8bp6ege2" path="res://LettersContainer.tscn" id="2_v1kpr"]
@@ -8,6 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://br0w1umpaw72j" path="res://final_screen.tscn" id="6_da5rh"]
 [ext_resource type="PackedScene" uid="uid://7oynmpobqx3x" path="res://bonus_round_info.tscn" id="7_n8bvq"]
 [ext_resource type="PackedScene" uid="uid://bc4vng3brsi13" path="res://GameOver.tscn" id="8_x2yp5"]
+[ext_resource type="AudioStream" uid="uid://dbdh665tmo76o" path="res://sounds/African4.mp3" id="9_low06"]
+[ext_resource type="AudioStream" uid="uid://barrk38mq2wwq" path="res://sounds/Modern3.mp3" id="9_ptl84"]
+[ext_resource type="AudioStream" uid="uid://btjkwjfbjknt5" path="res://sounds/ambient.ogg" id="11_1k2xt"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5uv7q"]
+streams_count = 1
+stream_0/stream = ExtResource("9_ptl84")
+stream_0/weight = 1.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3mcjd")
@@ -36,6 +44,20 @@ visible = false
 
 [node name="GameOver" parent="." instance=ExtResource("8_x2yp5")]
 visible = false
+
+[node name="ActivatePowerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_low06")
+pitch_scale = 0.71
+
+[node name="KeyPressedSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_5uv7q")
+volume_db = -2.0
+pitch_scale = 0.2
+
+[node name="AmbientMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_1k2xt")
+volume_db = -3.0
+autoplay = true
 
 [connection signal="draw" from="." to="." method="_on_draw"]
 [connection signal="pixel_drawn" from="EditBox" to="." method="_on_edit_box_pixel_drawn"]

@@ -15,6 +15,7 @@ var allowed_bitarray : Array = self._bit_array_from_image(self.image)
 var image_texture : ImageTexture = ImageTexture.create_from_image(self.image)
 
 var pressing = false
+var last_hovered_pixel = Vector2(-1, -1)
 
 signal pixel_drawn(x: int, y: int)
 signal pixel_erased(x: int, y: int)
@@ -35,13 +36,15 @@ func _process(delta):
 	
 	if(Input.is_action_just_released("click") and mouse_in_bounds):
 		self._draw_pixel(floor(get_local_mouse_position() / tile_size))
-	if(Input.is_action_pressed("click") and mouse_in_bounds):
+		
+	if((Input.is_action_pressed("click") or Input.is_action_pressed("erase")) and mouse_in_bounds):
 		self.pressing = true
 	else:
 		self.pressing = false
-
+		
 	if(Input.is_action_just_released("erase") and mouse_in_bounds):
 		self._erase_pixel(floor(get_local_mouse_position() / tile_size))
+		
 	queue_redraw()
 	pass
 
@@ -74,24 +77,36 @@ func _hitbox() -> Rect2:
 func _draw_pixel(p : Vector2i):
 	if(get_parent().current_mode == GameMode.DRAW):
 		if(self.image.get_pixel(p.x, p.y) == Color.TRANSPARENT):
+			$PixelDrawn.play()
 			self.image.set_pixel(p.x, p.y, Color.ORANGE)
 			self.pixel_drawn.emit(p.x, p.y)
+		else:
+			$AlreadyModified.play()
 
 	elif(get_parent().current_mode == GameMode.ERASE):
 		if(self.image.get_pixel(p.x, p.y) != Color.TRANSPARENT):
+			$PixelErased.play()
 			self.image.set_pixel(p.x, p.y, Color.TRANSPARENT)
 			self.pixel_erased.emit(p.x, p.y)
+		else:
+			$AlreadyModified.play()
 	
 func _erase_pixel(p : Vector2i):
 	if(get_parent().current_mode == GameMode.DRAW):
 		if(self.image.get_pixel(p.x, p.y) == Color.TRANSPARENT):
+			$PixelDrawn.play()
 			self.image.set_pixel(p.x, p.y, Color.ORANGE)
 			self.pixel_drawn.emit(p.x, p.y)
+		else:
+			$AlreadyModified.play()
 
 	elif(get_parent().current_mode == GameMode.ERASE):
 		if(self.image.get_pixel(p.x, p.y) != Color.TRANSPARENT):
+			$PixelErased.play()
 			self.image.set_pixel(p.x, p.y, Color.TRANSPARENT)
 			self.pixel_erased.emit(p.x, p.y)
+		else:
+			$AlreadyModified.play()
 
 func _set_initial_pixels():
 	pass

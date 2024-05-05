@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://br0w1umpaw72j"]
+[gd_scene load_steps=8 format=3 uid="uid://br0w1umpaw72j"]
 
 [ext_resource type="Texture2D" uid="uid://dsglryvc8g3th" path="res://card_large.png" id="1_2aqyo"]
 [ext_resource type="Script" path="res://final_screen.gd" id="1_l5g8a"]
 [ext_resource type="PackedScene" uid="uid://bl346syc3pf87" path="res://CustomLabel.tscn" id="2_f7nyu"]
 [ext_resource type="Script" path="res://Input.gd" id="4_bchp6"]
 [ext_resource type="Script" path="res://TimerDraw.gd" id="5_q06wq"]
+[ext_resource type="AudioStream" uid="uid://barrk38mq2wwq" path="res://sounds/Modern3.mp3" id="6_ie2y0"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gd0cw"]
+streams_count = 1
+stream_0/stream = ExtResource("6_ie2y0")
+stream_0/weight = 1.0
 
 [node name="FinalScreen" type="Node2D"]
 script = ExtResource("1_l5g8a")
@@ -45,6 +51,10 @@ scale = Vector2(2, 2)
 text = "60 SECONDS LEFT"
 color = Color(0.921569, 0.913725, 0.835294, 1)
 
+[node name="TickSound" type="AudioStreamPlayer2D" parent="TimerDraw"]
+stream = SubResource("AudioStreamRandomizer_gd0cw")
+volume_db = -2.0
+
 [node name="CustomLabel" parent="." instance=ExtResource("2_f7nyu")]
 position = Vector2(21, 305)
 scale = Vector2(2, 2)
@@ -52,5 +62,10 @@ text = "TYPE THE DISPLAYED POEM"
 width = 100
 height = 120
 color = Color(0.921569, 0.913725, 0.835294, 1)
+
+[node name="KeyPressedSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_gd0cw")
+volume_db = -2.0
+pitch_scale = 0.2
 
 [connection signal="out_of_time" from="TimerDraw" to="." method="_on_timer_draw_out_of_time"]
