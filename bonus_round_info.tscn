@@ -22,7 +22,7 @@ use_clean_font = true
 [node name="Info" parent="." instance=ExtResource("2_m0mbe")]
 position = Vector2(277, 171)
 scale = Vector2(2, 2)
-text = "TRY TO TYPE THE DISPLAYED POEM TO GET EXTRA POINTS. THE MORE ACCURATE, THE BETTER"
+text = "TRY TO TYPE THE DISPLAYED POEM TO GET EXTRA POINTS. THE MORE ACCURATE, THE BETTER. YOU ONLY HAVE 60 SECONDS"
 width = 320
 use_clean_font = true
 
