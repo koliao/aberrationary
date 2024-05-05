@@ -15,12 +15,6 @@ func _ready():
 	pass
 
 func _process(delta):
-	# cursor_pos.x = input_scale_x*input_length*(font_width + font_h_space)
-	# if(cursor_pos.x > input_width*input_scale_x):
-	# 	cursor_pos.x = int(cursor_pos.x) % int(input_width*input_scale_x)
-	# cursor_pos.x += $Input.position.x
-
-	# cursor_pos.y = $Input.position.y + 10*$Input.scale.y
 	queue_redraw()
 
 func _input(event):

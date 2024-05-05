@@ -25,7 +25,7 @@ func _process(delta):
 	queue_redraw()
 
 func _input(event):
-	if(not self.visible):
+	if(not get_parent().visible):
 		return
 		
 	if event is InputEventKey:

@@ -56,7 +56,6 @@ pitch_scale = 0.2
 
 [node name="AmbientMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_1k2xt")
-volume_db = -3.0
 autoplay = true
 
 [connection signal="draw" from="." to="." method="_on_draw"]
